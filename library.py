@@ -77,10 +77,10 @@ class algcom:
 
     def Jacobi(self):
         x = [1]*self.n
-      
+        maxitter = 1000
         temp = x.copy()
-        last_res = []
-        while(True):
+        while(maxitter):
+            maxitter -= 1
             for i in range(self.n):
                 soma = 0
                 for j in range(self.n):
@@ -89,32 +89,31 @@ class algcom:
                 temp[i] = (self.b[i] - soma)/self.A[i][i]
 
             res = self.norma(temp, x)
-            last_res.append(res)
-            if len(last_res) >= 10:
-                diff_res = [last_res[i] - last_res[i-1]  for i in range(len(last_res) - 3, len(last_res))]
-                tendecy = sum(list(map(lambda x: x > 0, diff_res)))
-                if tendecy == 0:
-                    self.error = "Houve divergência no método Jacobi"
-                    return 
-
-            print(x, temp)
             x = temp.copy()
             if res <= self.tolm:
                 return x
+        self.error = "Houve divergência no método Jacobi"
 
+    def GaussSaiden(self):
+        x = [1]*self.n
+        maxitter = 1000
+        
+        while(maxitter):
+            x_ant = x.copy()
+            maxitter -= 1
+            for i in range(self.n):
+                soma = 0
+                for j in range(self.n):
+                    if j != i:
+                        soma += self.A[i][j] * x[j]
+                x[i] = (self.b[i] - soma)/self.A[i][i]
 
+            res = self.norma(x,x_ant)
+            if res <= self.tolm:
+                
+                return x
+        self.error = "Houve divergência no método Jacobi"
 
-
-    # def gaussSeidel(self):
-    #     x = [1]*self.n
-    #     for i in range(self.n):
-    #         soma = 0
-    #         for j in range(self.n):
-    #             if j != i:
-    #                 soma += self.A[i][j] * x[j]
-    #         x[i] = (self.b[i] - soma)/self.A[i][i]
-             
-    #     return x
     def solve(self):
         if self.icod == 1:
             self._LU_decomposition()
