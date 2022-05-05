@@ -152,7 +152,6 @@ class algcom:
 # idet = int(input('Devo calcular a determinante?'))
 # A = eval(input('Insira a matriz A:'))
 #y = eval(input('Insira o matriz y:'))
-
 # b = eval(input('Insira o vetor b'))
 # tolm = int(input('Qual o número máximo de iterações?'))
 
