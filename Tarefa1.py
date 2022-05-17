@@ -147,15 +147,37 @@ class algcom:
             else:
                  arquivo.write(f"Error: {self.error}\n")
 
-# n = int(input('Qual o tamanho da matriz?'))
-# icod = int(input('Qual o código da operação?'))
-# idet = int(input('Devo calcular a determinante?'))
-# A = eval(input('Insira a matriz A:'))
-# b = eval(input('Insira o vetor b'))
-# tolm = int(input('Qual o número máximo de iterações?'))
+n = int(input('Qual o tamanho da matriz?'))
+icod = int(input('Qual o código da operação?'))
+idet = int(input('Devo calcular a determinante?'))
+tolm = int(input('Qual o número máximo de iterações?'))
 
-teste = algcom(3, 3, 0, [[1, 2, 3], [1, -2, -1], [2, -3, 4]],[20000, 20000, 20000], 10**(-3))
+with open('A.txt', 'r') as arq:
+    contlinhas = 0
+    text = arq.readlines()
+    A =  []
+    for line in text:
+        linha = line.split(' ')
+        if linha[n-1][-1] == '\n':
+            linha[n-1] = linha[n-1][:-1]
+        for i in range(len(linha)):
+            linha[i] = int(linha[i])
+        A.insert(contlinhas,linha)    
+        contlinhas+=1
+    
+    with open('b.txt', 'r') as arq:
+        contlinhas = 0
+        text = arq.readlines()
+        b =  []
+        for line in text:
+            linha = line.split(' ')
+            if linha[0][-1] == '\n':
+                linha[0] = linha[0][:-1]            
+            b.insert(contlinhas,int(linha[0]))    
+            contlinhas+=1
+        
+task1 = algcom(n, icod, idet, A, b,tolm)
 
-teste.output()
+task1.output()
 
 

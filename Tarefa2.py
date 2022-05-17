@@ -1,8 +1,8 @@
 import numpy as np
 
 class algcom:
-    def __init__(self, n, icod, idet, A, b, tolm):
-        self.n, self.icod, self.idet, self.A, self.b, self.tolm = n, icod, idet, np.array(A), b, tolm
+    def __init__(self, n, icod, idet, A, tolm):
+        self.n, self.icod, self.idet, self.A, self.tolm = n, icod, idet, np.array(A), tolm
         self.error = 0
         self.autovetor = [0]*self.n
         self.maxiter = 1000
@@ -46,7 +46,8 @@ class algcom:
             self.maxiter -= 1
         if self.maxiter == 0: 
             self.error = "Houve divergência no método Power"
-        return (lamda, x)    
+        return (lamda, x)  
+      
     def output(self):
         with open("output.txt", "w") as arquivo:
             if self.icod == 1:
@@ -72,8 +73,24 @@ class algcom:
                         arquivo.write(text)
 
                 
+n = int(input('Qual a ordem da matriz A?'))
+icod = int(input('Qual o código da operação?'))
+idet = int(input('Devo calcular a determinante?'))
+tolm = float(input('Qual o número máximo de iterações?'))
 
-    
-teste = algcom(3, 2, 0, [[1.0, 0.2, 0.0], [0.2, 1.0, 0.5], [0.0, 0.5, 1.0]],[20000, 20000, 20000], 10**(-2))
+with open('A.txt', 'r') as arq:
+    contlinhas = 0
+    text = arq.readlines()
+    A =  []
+    for line in text:
+        linha = line.split(' ')
+        if linha[n-1][-1] == '\n':
+            linha[n-1] = linha[n-1][:-1]
+        for i in range(len(linha)):
+            linha[i] = int(linha[i])
+        A.insert(contlinhas,linha)    
+        contlinhas+=1
+       
+teste = algcom(n, icod, idet, A,tolm)
 
 teste.output()

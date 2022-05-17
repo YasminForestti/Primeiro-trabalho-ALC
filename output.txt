@@ -1,3 +1,2 @@
-f1(2) = 3.2199999999994056
-f2(2) = 3.38
-Nao e possivel fazer regressao com o terceiro conjunto de funcoes escolhidasn
+lambda = 11.009488704791796 
+ X = [0.70307388 0.67634277 1.        ]
