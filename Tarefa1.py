@@ -131,7 +131,7 @@ class algcom:
                 for x in range(0,self.n):
                     det *= self.A[x][x]
             if not self.error:
-                return self._back_substitution(self._foward_substitution(self.b)), det
+                return self._back_substitution(self._foward_substitution(self.b)), det**2
         if self.icod == 3:
             if not self.error:
                 return self.Jacobi(), 1
@@ -151,7 +151,6 @@ class algcom:
 # icod = int(input('Qual o código da operação?'))
 # idet = int(input('Devo calcular a determinante?'))
 # A = eval(input('Insira a matriz A:'))
-#y = eval(input('Insira o matriz y:'))
 # b = eval(input('Insira o vetor b'))
 # tolm = int(input('Qual o número máximo de iterações?'))
 

@@ -1,0 +1,3 @@
+f1(2) = 3.2199999999994056
+f2(2) = 3.38
+Nao e possivel fazer regressao com o terceiro conjunto de funcoes escolhidasn
