@@ -1,1 +1,1 @@
-f(2) = 3.22
+Error: Esta matriz nao e simetrica, nao e possivel aplicar Cholesky

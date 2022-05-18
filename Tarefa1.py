@@ -1,7 +1,3 @@
-from pickle import NONE
-from turtle import forward
-
-
 class algcom:
     def __init__(self, n, icod, idet, A, b, tolm):
         self.n, self.icod, self.idet, self.A, self.b, self.tolm = n, icod, idet, A, b, tolm
@@ -54,6 +50,14 @@ class algcom:
         return
     
     def Cholesky(self):
+        for i in range(self.n):
+            if self.A[i][i] <= 0:
+                self.error = "Esta matriz nao e positiva definida, nao e possivel aplicar Cholesky"
+                return
+            for j in range(self.n):
+                if self.A[i][j] == self.A[j][i]:
+                    self.error = "Esta matriz nao e simetrica, nao e possivel aplicar Cholesky"
+                    return
         for i in range(self.n):
             raiz = self.A[i][i] - sum([self.A[i][k]**2  for k in range(0,  i)])
             if raiz < 0:
@@ -137,7 +141,6 @@ class algcom:
                 return self.Jacobi(), 1
     def output(self):
         sol = self.solve() 
-        print(sol)
         with open("output.txt", "w") as arquivo:
             if not self.error:
                 if self.idet != 0:
@@ -150,7 +153,7 @@ class algcom:
 n = int(input('Qual o tamanho da matriz?'))
 icod = int(input('Qual o código da operação?'))
 idet = int(input('Devo calcular a determinante?'))
-tolm = float(input('Qual o número máximo de iterações?'))
+tolm = float(input('Qual a tolerância?'))
 
 with open('A.txt', 'r') as arq:
     contlinhas = 0
