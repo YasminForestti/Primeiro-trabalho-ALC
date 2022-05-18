@@ -40,13 +40,16 @@ class algcom:
             for c in range(i, self.n):
                 for r in range(i+1, self.n):
                     if c == i:
+                        #primeira iteração
                         try:
-                            self.A[r][c] = self.A[r][c]/self.A[c][c]
+                            self.A[r][c] = self.A[r][c]/self.A[c][c] # definindo alpha e betha positivos
                         except:
+                            # Acontece quando o pivô é zero
                             self.error = "Decomposição LU não é possível"
                             return
                     else:
                         self.A[r][c] = self.A[r][c] - self.A[r][i] * self.A[i][c]
+                        
         return
     
     def Cholesky(self):
@@ -61,17 +64,15 @@ class algcom:
         for i in range(self.n):
             raiz = self.A[i][i] - sum([self.A[i][k]**2  for k in range(0,  i)])
             if raiz < 0:
+                # podemos n ter detectado que a matriz não é positiva definida
                 self.error =  "Decomposição Cholesky não é possível"
                 return
             else:
                 self.A[i][i] = (raiz)**0.5
             for j in range(i+1, self.n):
-                try:
-                    self.A[j][i] = (self.A[i][j] -  sum([self.A[i][k]*self.A[j][k]  for k in range(0,  i)]))/self.A[i][i]
-                except:
-                    self.error = "Decomposição LU não é possível"
-                    return
-                
+                #preenchendo a inferior e consultando a superior
+                self.A[j][i] = (self.A[i][j] -  sum([self.A[i][k]*self.A[j][k]  for k in range(0,  i)]))/self.A[i][i]
+
         return
     
 
@@ -126,6 +127,8 @@ class algcom:
                 for x in range(0,self.n):
                     det *= self.A[x][x]
             if not self.error:
+                # LY = B
+                # UX = Y
                 return self._back_substitution(self._foward_substitution(self.b)), det
 
         if self.icod == 2:
@@ -135,6 +138,9 @@ class algcom:
                 for x in range(0,self.n):
                     det *= self.A[x][x]
             if not self.error:
+                # LY = B
+                # UX = Y
+                # U = L.T
                 return self._back_substitution(self._foward_substitution(self.b)), det**2
         if self.icod == 3:
             if not self.error:
