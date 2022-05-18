@@ -150,7 +150,7 @@ class algcom:
 n = int(input('Qual o tamanho da matriz?'))
 icod = int(input('Qual o código da operação?'))
 idet = int(input('Devo calcular a determinante?'))
-tolm = int(input('Qual o número máximo de iterações?'))
+tolm = float(input('Qual o número máximo de iterações?'))
 
 with open('A.txt', 'r') as arq:
     contlinhas = 0

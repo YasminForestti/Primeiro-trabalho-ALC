@@ -101,7 +101,7 @@ class algcom:
                 arquivo.write(text)
 
     
-with open('tarefa3.txt', 'r') as arq:
+with open('pares.txt', 'r') as arq:
     text = arq.readlines()
     pares = []
     for line in text:
