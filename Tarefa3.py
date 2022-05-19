@@ -1,4 +1,3 @@
-import errno
 import numpy as np
 
 class algcom:

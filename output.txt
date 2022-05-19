@@ -1,3 +1,1 @@
-f1(2) = 3.2199999999994056
-f2(2) = 3.38
-Nao e possivel fazer regressao com o terceiro conjunto de funcoes escolhidas
+Solucao do sistema X: [0.63480855056, -0.17047239831199998, -0.514763800844]

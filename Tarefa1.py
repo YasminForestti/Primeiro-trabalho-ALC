@@ -142,6 +142,9 @@ class algcom:
         if self.icod == 3:
             if not self.error:
                 return self.Jacobi(), 1
+        if self.icod == 4:
+            if not self.error:
+                return self.GaussSaiden(), 1
     def output(self):
         sol = self.solve() 
         with open("output.txt", "w") as arquivo:
