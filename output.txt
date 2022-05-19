@@ -1,2 +1,3 @@
-Solucao do sistema X: [1.0000024225206396, 2.754643271429824e-06, -0.9999968566409426]
- Determinante: 1
+f1(2) = 3.2199999999994056
+f2(2) = 3.38
+Nao e possivel fazer regressao com o terceiro conjunto de funcoes escolhidas

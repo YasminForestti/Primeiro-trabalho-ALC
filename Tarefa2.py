@@ -68,13 +68,13 @@ class algcom:
                     arquivo.write(f"Error: {self.error}\n")
                 else:
                     if self.idet == 0:
-                        text = f"autovalores na diagonal de: {self.A} \n autovetores nas colunas de: {X}"
+                        text = f"autovalores na diagonal de:\n{self.A}\n autovetores nas colunas de:\n{X}"
                         arquivo.write(text)
                     else:
                         det = 1
                         for i in range(self.n):
                             det *= self.A[i][i]
-                        text = f"autovalores na diagonal de: {self.A} \n autovetores nas colunas de: {X} \n O determinante de A: {det}"
+                        text = f"autovalores na diagonal de:\n{self.A}\n autovetores nas colunas de:\n{X}\n O determinante de A: {det}"
                         arquivo.write(text)
 
                 
