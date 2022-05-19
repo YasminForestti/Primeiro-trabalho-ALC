@@ -16,9 +16,6 @@ class algcom:
             x[i] = (y[i] - som)/self.A[i][i]
         return x
 
-    def Erros():
-        pass
-
     def _foward_substitution(self, y):
         x = []
         if self.icod == 1:

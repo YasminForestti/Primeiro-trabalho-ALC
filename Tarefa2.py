@@ -10,7 +10,7 @@ class algcom:
         X = np.identity(self.n)
         for i in range(self.n):
             for j in range(self.n):
-                if self.A[i][j] == self.A[j][i]:
+                if self.A[i][j] != self.A[j][i]:
                     self.error = "Esta matriz nao e simetrica, nao e possivel aplicar Jacobi"
                     return
         while(self.maxiter):
