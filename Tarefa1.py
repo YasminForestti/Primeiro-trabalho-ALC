@@ -58,7 +58,7 @@ class algcom:
                 self.error = "Esta matriz nao e positiva definida, nao e possivel aplicar Cholesky"
                 return
             for j in range(self.n):
-                if self.A[i][j] == self.A[j][i]:
+                if self.A[i][j] != self.A[j][i]:
                     self.error = "Esta matriz nao e simetrica, nao e possivel aplicar Cholesky"
                     return
         for i in range(self.n):
@@ -170,7 +170,7 @@ with open('A.txt', 'r') as arq:
         if linha[n-1][-1] == '\n':
             linha[n-1] = linha[n-1][:-1]
         for i in range(len(linha)):
-            linha[i] = int(linha[i])
+            linha[i] = float(linha[i])
         A.insert(contlinhas,linha)    
         contlinhas+=1
     
@@ -182,11 +182,9 @@ with open('A.txt', 'r') as arq:
             linha = line.split(' ')
             if linha[0][-1] == '\n':
                 linha[0] = linha[0][:-1]            
-            b.insert(contlinhas,int(linha[0]))    
+            b.insert(contlinhas,float(linha[0]))    
             contlinhas+=1
         
 task1 = algcom(n, icod, idet, A, b,tolm)
 
 task1.output()
-
-

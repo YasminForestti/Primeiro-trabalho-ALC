@@ -1,1 +1,2 @@
-Error: Esta matriz nao e simetrica, nao e possivel aplicar Cholesky
+Solucao do sistema X: [1.0000024225206396, 2.754643271429824e-06, -0.9999968566409426]
+ Determinante: 1

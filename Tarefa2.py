@@ -92,7 +92,7 @@ with open('A.txt', 'r') as arq:
         if linha[n-1][-1] == '\n':
             linha[n-1] = linha[n-1][:-1]
         for i in range(len(linha)):
-            linha[i] = int(linha[i])
+            linha[i] = float(linha[i])
         A.insert(contlinhas,linha)    
         contlinhas+=1
        
